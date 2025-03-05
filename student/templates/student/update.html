@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="{% url 'student-update' student.id %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update {{ student }}</button>
+    <a href="{% url 'student-delete' student.id %}">Delete</a>
+</form>
+{% endblock content %}

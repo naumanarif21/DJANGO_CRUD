@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ student.name }}
+{{ student.date_of_birth }}
+<a href="{% url 'student-update' student.id %}">Edit</a>
+{% endblock content %}
