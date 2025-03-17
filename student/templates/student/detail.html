@@ -4,4 +4,5 @@
 {{ student.name }}
 {{ student.date_of_birth }}
 <a href="{% url 'student-update' student.id %}">Edit</a>
+<a href="{% url 'student-age' student.id %}">Compute Age</a>
 {% endblock content %}

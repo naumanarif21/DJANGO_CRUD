@@ -4,6 +4,7 @@
 {% for student in students %}
         {{student}}
         <br>
+        <a href="{% url 'student-detail' student.id %}">View</a>
         <a href="{% url 'student-update' student.id %}">Edit</a>
 {% endfor %}
 
