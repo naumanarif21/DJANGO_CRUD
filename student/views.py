@@ -15,6 +15,17 @@ class StudentListView(ListView):
     template_name = 'student/list.html'
     context_object_name = 'students'
 
+    def get_template_names(self):
+        if self.request.htmx:
+            print(self.request.path)
+            if self.request.GET.get('image'):
+                self.template_name = self.template_name + '#image'
+            elif self.request.GET.get('text'):
+                self.template_name = self.template_name + '#my-text'
+            else:
+                self.template_name = self.template_name + '#list-partial'
+        return [self.template_name]
+
 
 class StudentAddView(CreateView):
     model = Student

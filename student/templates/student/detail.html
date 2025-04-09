@@ -5,4 +5,5 @@
 {{ student.date_of_birth }}
 <a href="{% url 'student-update' student.id %}">Edit</a>
 <a href="{% url 'student-age' student.id %}">Compute Age</a>
+<a href="{% url 'student-list' %}">Back to List</a>
 {% endblock content %}

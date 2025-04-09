@@ -1,12 +1,42 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% load partials %}
+
+{% partialdef list-partial %}
 {% for student in students %}
         {{student}}
         <br>
-        <a href="{% url 'student-detail' student.id %}">View</a>
-        <a href="{% url 'student-update' student.id %}">Edit</a>
+        <a hx-get="{% url 'student-detail' student.id %}" hx-target="#body" hx-swap="outerHTML">View</a>
+        <a hx-get="{% url 'student-update' student.id %}" hx-target="#body" hx-swap="outerHTML">Edit</a>
 {% endfor %}
+{% endpartialdef list-partial %}
 
 
+{% partialdef image %}
+<h1> this is an image</h1>
+{% endpartialdef image %}
+
+{% partialdef my-text %}
+<h2> this is an TEXT TEXT TEXT</h2>
+{% endpartialdef my-text %}
+
+
+{% block content %}
+{% for student in students %}
+        {{student}}
+        <a hx-get="{% url 'student-detail' student.id %}" hx-target="#body" hx-swap="outerHTML">View</a>
+        <a hx-get="{% url 'student-update' student.id %}" hx-target="#body" hx-swap="outerHTML">Edit</a>
+        <a hx-get="{% url 'student-list' %}?image=yes" hx-target="#asdas" hx-swap="beforeend">Image</a>
+        <a hx-get="{% url 'student-list' %}?text=yes" hx-target="#text" hx-swap="beforeend">Text</a>
+        <hr>
+
+        <div id="asdas">
+
+        </div>
+
+
+        <div id="text">
+
+        </div>
+{% endfor %}
 {% endblock content %}
